@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+<body>
+<canvas id="myCanvas" width="600" height="400" style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+<script>
+window.requestAnimFrame = (function(callback) {
+        return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+        function(callback) {
+          window.setTimeout(callback, 1000 / 60);
+        };
+      })();
+
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+
+function drawLine(ctx,beginX,beginY,endX,endY,color) {
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(beginX,beginY);
+    ctx.lineTo(endX,endY);
+    ctx.stroke();
+ }
+ function animate(canvas, context, startTime) {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    var time = (new Date()).getTime() - startTime;
+    var origX=300, origY=200;
+    var R = 100, theta = ( (time/1000) % 60 ) *6 -90;
+    var PI=3.1415926;
+    // console.log('TimeTheta='+theta);
+    var endX = origX + R*Math.cos(PI*theta/180);
+    var endY = origY + R*Math.sin(PI*theta/180);
+     drawLine(context,origX,origY,endX,endY,'red');
+     // request new frame
+        requestAnimFrame(function() {
+          animate(canvas, context, startTime);
+         });
+ }
+ setTimeout(function() {
+        var startTime = (new Date()).getTime();
+        animate(c, ctx, startTime);
+   }, 1000);
+</script>
+</body>
+</html>

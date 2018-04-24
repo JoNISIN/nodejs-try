@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Test CSS</title>
+	<style type="text/css">
+		body{
+			background-color:#C4E1FF;
+			color:#000079;
+			font-family:微軟正黑體;
+			text-align:center;
+			margin-left:auto;
+			margin-right:auto;
+			vertical-align:middle;
+		}
+		table{
+			text-align:left;
+			margin-left:auto;
+			margin-right:auto;
+			vertical-align:middle;
+			//background-color:#005AB5;
+			background-color:#0080FF;
+			color:#ECF5FF;
+			border-radius:10px;
+			margin-top:50px;
+			padding-top:10px;
+			padding-left:10px;
+			padding-right:10px;
+			padding-bottom:40px;
+			box-shadow:3px 3px 2px 2px 	#4F4F4F;
+		}
+		td{
+			padding:8px;
+		}
+		button{
+			width:80px;
+			height:30px;
+			border-radius:5px;
+			background-color:#97CBFF;
+			border:none;
+			box-shadow:1px 1px 1px 1px 	#4F4F4F;
+			color:#ffffff;
+		}
+		button:hover {
+			border:none;
+			background-color:#ffffff;
+			color:#97CBFF;
+			border: 2px solid #97CBFF;
+		}
+		input[type='text'],input[type='password'],input[type='submit']{
+			border:none;
+			border-radius:5px;
+			box-shadow:1px 1px 1px 1px 	#4F4F4F;
+		}
+　　　　ul,li{list-style:none;}
+		.main_info{
+			margin-left:auto;
+			margin-right:auto;
+			background-color:#C4E1FF;
+			color:#FFFFFF;
+			border-radius:5px;
+			padding-top:10px;
+			padding-left:20px;
+			padding-right:20px;
+			padding-bottom:30px;
+			box-shadow:1px 1px 1px 1px 	#4F4F4F;
+		}
+		input{
+			margin-bottom:10px;
+			margin-top:5px;
+		}
+　　</style>
+</head>
+<body>
+<table border="0">
+<tr><td colspan="5"><ul id="myQuestion" class='main_info'><h1>Wait For Call...</h1></ul></td></tr>
+<tr><td colspan="5" style="text-align:center;"><p id='text_hint'>按按鈕換輸入囉</p></td></tr>
+<tr>
+<td><button onclick="InputText()">Text</button></td>
+<td><button onclick="InputRadio()">Radio</button></td>
+<td><button onclick="InputCheckBox()">CheckBox</button></td>
+<td><button onclick="InputDate()">Date</button></td>
+<td><button onclick="InputColor()">Color</button></td>
+</tr>
+<tr>
+<td><button onclick="InputRange()">Range</button></td>
+<td><button onclick="InputTime()">Time</button></td>
+<td><button onclick="InputEmail()">E-mail</button></td>
+<td><button onclick="InputSelect()">Select</button></td>
+<td><button onclick="InputCool()">Cool</button></td>
+</tr>
+</table>
+<script>
+
+var input = '';
+
+function changeHint(text){
+	document.getElementById("text_hint").innerHTML = text;
+}
+function InputText() {
+    var nodeQ = document.getElementById("myQuestion");
+    
+    var nodeL = document.createElement("LI");
+   　var inputStr = '使用者名稱:<br> <input type="text" name="username"><br>使用者密碼:<br><input type="password"   name="psw">';
+   input+='<br>'+inputStr;
+    nodeL.innerHTML = inputStr;
+    if(nodeQ.hasChildNodes() ) {
+      while (nodeQ.firstChild) {
+          nodeQ.removeChild(nodeQ.firstChild);
+      }
+    }
+    nodeQ.appendChild(nodeL);
+	changeHint("輸入文字");
+}
+function InputRadio() {
+    var nodeQ = document.getElementById("myQuestion");
+    
+    var nodeL = document.createElement("LI");
+   　var inputStr = '使用者性別:<p>	<input type="radio" name="gender" value="male" checked> 男性<br>	<input type="radio" name="gender" value="female"> 女性<br>	<input type="radio" name="gender" value="other"> 第三性</p>';
+    input+='<br>'+inputStr;
+	nodeL.innerHTML = inputStr;
+    if(nodeQ.hasChildNodes() ) {
+      while (nodeQ.firstChild) {
+          nodeQ.removeChild(nodeQ.firstChild);
+      }
+    }
+    nodeQ.appendChild(nodeL);
+	changeHint("輸入單選");
+}
+function InputCheckBox() {
+    var nodeQ = document.getElementById("myQuestion");
+    
+    var nodeL = document.createElement("LI");
+   　var inputStr = '使用者職業:<br>	<input type="checkbox" name="jobs" value="student"> 學生<br>	<input type="checkbox" name="jobs" value="teacher"> 老師<br>	<input type="checkbox" name="jobs" value="researcher"> 研究生<br>	<input type="checkbox" name="jobs" value="pfs"> 教授<br>	<input type="checkbox" name="jobs" value="doctor"> 醫生<br>	<input type="checkbox" name="jobs" value="engineer"> 工程師<br>	<input type="checkbox" name="jobs" value="other"> 其他<br>';
+    input+='<br>'+inputStr;
+	nodeL.innerHTML = inputStr;
+    if(nodeQ.hasChildNodes() ) {
+      while (nodeQ.firstChild) {
+          nodeQ.removeChild(nodeQ.firstChild);
+      }
+    }
+    nodeQ.appendChild(nodeL);
+	changeHint("輸入多選");
+}
+function InputDate() {
+    var nodeQ = document.getElementById("myQuestion");
+    
+    var nodeL = document.createElement("LI");
+   　var inputStr ="使用者生日:<br> <input type='date' name='bd'>";
+    input+='<br>'+inputStr;
+	nodeL.innerHTML = inputStr;
+    if(nodeQ.hasChildNodes() ) {
+      while (nodeQ.firstChild) {
+          nodeQ.removeChild(nodeQ.firstChild);
+      }
+    }
+    nodeQ.appendChild(nodeL);
+	changeHint("輸入日期");
+}
+function InputColor() {
+    var nodeQ = document.getElementById("myQuestion");
+    
+    var nodeL = document.createElement("LI");
+   　var inputStr ="您喜歡的顏色:<br>顏色選擇: <input type='color' name='lcolor'>";
+    input+='<br>'+inputStr;
+	nodeL.innerHTML = inputStr;
+    if(nodeQ.hasChildNodes() ) {
+      while (nodeQ.firstChild) {
+          nodeQ.removeChild(nodeQ.firstChild);
+      }
+    }
+    nodeQ.appendChild(nodeL);
+	changeHint("輸入顏色");
+}
+function InputRange() {
+    var nodeQ = document.getElementById("myQuestion");
+    
+    var nodeL = document.createElement("LI");
+	
+	var stdtall = 165;
+	var stdwei = 55;
+   　var inputStr ="您的身高: <input type='range' id='tbar' name='tall' min='100' max='300' value=165 oninput='changeTall(this)'><span id='valTall'>200</span><br>您的體重: <input type='range' name='wei' min='20' max='200' value='55' oninput='changeWei(this)'><span id='valWei'>0</span><br>";
+    input+='<br>'+inputStr;
+	nodeL.innerHTML = inputStr;
+    if(nodeQ.hasChildNodes() ) {
+      while (nodeQ.firstChild) {
+          nodeQ.removeChild(nodeQ.firstChild);
+      }
+    }
+    nodeQ.appendChild(nodeL);
+	document.getElementById('valTall').innerHTML = stdtall;
+	document.getElementById('valWei').innerHTML = stdwei;
+	changeHint("範圍內數值選擇");
+}
+function InputTime() {
+    var nodeQ = document.getElementById("myQuestion");
+    
+    var nodeL = document.createElement("LI");
+   　var inputStr ="使用者空閒時段:<br>開始時間: <input type='time' name='ltime'><br>結束時間: <input type='time' name='ltime'>";
+    input+='<br>'+inputStr;
+	nodeL.innerHTML = inputStr;
+    if(nodeQ.hasChildNodes() ) {
+      while (nodeQ.firstChild) {
+          nodeQ.removeChild(nodeQ.firstChild);
+      }
+    }
+    nodeQ.appendChild(nodeL);
+	changeHint("時間選擇");
+}
+function InputEmail() {
+    var nodeQ = document.getElementById("myQuestion");
+    
+    var nodeL = document.createElement("LI");
+   　var inputStr ="<form>電子郵件信箱: <input type='email' name='email'><br><input type='submit'></form>";
+    input+='<br>'+inputStr;
+	nodeL.innerHTML = inputStr;
+    if(nodeQ.hasChildNodes() ) {
+      while (nodeQ.firstChild) {
+          nodeQ.removeChild(nodeQ.firstChild);
+      }
+    }
+    nodeQ.appendChild(nodeL);
+	changeHint("輸入電子郵件信箱若有發送時 發送時檢查格式");
+}
+function InputSelect() {
+    var nodeQ = document.getElementById("myQuestion");
+    
+    var nodeL = document.createElement("LI");
+   　var inputStr ="居住區域: <select name='Locat'><option value='n'>北部</option><option value='m'>中部</option><option value='s'>南部</option><option value='e'>東部</option></select>";
+    input+='<br>'+inputStr;
+	nodeL.innerHTML = inputStr;
+    if(nodeQ.hasChildNodes() ) {
+      while (nodeQ.firstChild) {
+          nodeQ.removeChild(nodeQ.firstChild);
+      }
+    }
+    nodeQ.appendChild(nodeL);
+	changeHint("居住區域選單");
+}
+function InputCool() {
+	if(input=='') input='<br>Nothing At Now<br>'
+    var nodeQ = document.getElementById("myQuestion");
+    
+    var nodeL = document.createElement("LI");
+	nodeL.innerHTML = input;
+	input = '';
+    if(nodeQ.hasChildNodes() ) {
+      while (nodeQ.firstChild) {
+          nodeQ.removeChild(nodeQ.firstChild);
+      }
+    }
+    nodeQ.appendChild(nodeL);
+	changeHint("大雜燴");
+}
+
+
+function changeTall(bar) {
+  	var value = bar.value ;
+  	document.getElementById('valTall').innerHTML = value;
+}
+function changeWei(bar) {
+  	var value = bar.value ;
+  	document.getElementById('valWei').innerHTML = value;
+}
+</script>
+</body>
+</html>
